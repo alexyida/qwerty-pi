@@ -9,9 +9,26 @@ mov	r1,#1
 lsl	r1,#18
 str	r1,[r0,#4]
 
+loop$:
+
 mov r1,#1
 lsl r1,#16
 str r1,[r0,#40]
 
-loop$:
+mov r1,#0x3F0000
+wait1$:
+sub r1,#1
+cmp r1,#0
+bne wait1$
+
+mov r1,#1
+lsl r1,#16
+str r1,[r0,#28]
+
+mov r1,#0x3F0000
+wait2$:
+sub r1,#1
+cmp r1,#0
+bne wait2$
+
 b loop$
